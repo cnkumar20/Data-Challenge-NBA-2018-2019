@@ -17,14 +17,13 @@ To keep the inspiration going ,Financial motivation is one of the reason.
 
 Currently its taken over by the machines where the
 <h2> Sites to bet on NBA
-<li>
-
 
 
 <h2> Data Source:
 ![](images/data_source_quora.png)
 <li>Consolidate List of Current Season Data fromfrom SOurce: <h3>http://data.nba.net/10s/prod/v1/today.json
-
+```javascript{
+  "some": "
 showPlayoffsClinch: false,
 links: {
 anchorDate: "20181016",
@@ -65,4 +64,6 @@ teamLeaders2: "/prod/v1/2018/teams/{{teamId}}/leaders.json",
 playoffsBracket: "/prod/v1/2017/playoffsBracket.json",
 playoffSeriesLeaders: "/prod/v1/2018/playoffs_{{seriesId}}_leaders.json"
 }
+}"
 }
+```

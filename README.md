@@ -23,7 +23,8 @@ Currently its taken over by the machines where the
 ![](images/data_source_quora.png)
 <li>Consolidate List of Current Season Data fromfrom SOurce: <h3>http://data.nba.net/10s/prod/v1/today.json
 <p>
-```javascript
+```
+ javascript
 {
    "showPlayoffsClinch": false,
    "links": {

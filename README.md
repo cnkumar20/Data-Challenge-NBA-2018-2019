@@ -17,9 +17,15 @@ To keep the inspiration going ,Financial motivation is one of the reason.
 
 Currently its taken over by the machines where the
 <h2> Sites to bet on NBA
+<li><h4>Detailed Link
+<li>https://www.onlinebetting.com/basketball-betting/nba-bet-types/
+<li>https://sportsbettingsites.org/nba-basketball/
+<p><h4>Specific sites:
+<li>
 
 
-<h2> Data Source:
+
+<h2> Data Source and Credit:
 ![](images/data_source_quora.png)
 <li>Consolidate List of Current Season Data fromfrom SOurce: <h3>http://data.nba.net/10s/prod/v1/today.json
 <p>

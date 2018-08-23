@@ -1,5 +1,5 @@
+import Player as p
 def main():
-    pass
-    
+    p.print_name()
 if __name__ == '__main__':
     main()

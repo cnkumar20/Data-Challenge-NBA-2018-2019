@@ -1,9 +1,19 @@
-{ "namespace": "com.valmiki20.nba.player",
+{     "namespace": "com.valmiki20.nba.player",
       "type": "record",
       "name": "User",
       "fields": [
-          {"name": "name", "type": "string"},
-          {"name": "favorite_number",  "type": ["int", "null"]},
-          {"name": "favorite_color", "type": ["string", "null"]}
-      ]
+          {"name": "firstName", "type": "string"},
+          {"name": "lastName",  "type": "string"},
+          {"name": "personId", "type": "string"},
+          {"name": "teamId", "type": "string"},
+          {"name": "jersey", "type": "string"},
+          {"name": "isActive", "type": "boolean"},
+          {"name": "pos",  "type": "string"},
+          {"name": "heightFeet", "type": "string"},
+          {"name": "heightInches", "type": "string"},
+          {"name": "heightMeters", "type": "string"},
+          {"name": "weightPounds", "type": "string"},
+          {"name": "weightKilograms", "type": "string"},
+          {"name": "dateOfBirthUTC", "type": "string"}
+        ]
 }

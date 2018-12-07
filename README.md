@@ -11,14 +11,21 @@ I watched a machine beating a man in alpha Go game , I realized it marked the ma
 
  It was a mental game where it showed that Machines are only good at crunching numbers and giving a good probablitly of successful next move.
 
-Machines are yet to beat a man in team game, but wait all these silicon valley teams are beating a Man in a realtime physical team game using various stats and pre and that is LEBRON JAMES,
-LEBRON JAMES if he had stayed in west and won a championship again there would have still been the hope that Machines are still yet to take over this game.
+#Machines are yet to beat a man in team game, but wait all these silicon valley teams are beating a Man in a realtime physical team game using various stats and pre and that is LEBRON JAMES,
+#LEBRON JAMES if he had stayed in west and won a championship again there would have still been the hope that Machines are still yet to take over this game.
 
-Here comes the interesting part, Lebron James moved to West and gave a hope of a different kind that is we can adopt the data and machines help to only prove that its Man who will be in fore front.
+#Here comes the interesting part, Lebron James moved to West and gave a hope of a different kind that is we can adopt the data and machines help to only prove that its Man who will be in fore front.
 
-I want him to win many more championship -- he is the man (2018-2019)
+#I want him to win many more championship -- he is the man (2018-2019)
 
-  To keep the inspiration going ,Financial motivation is one of the reason.
+*Update November-29-2018
+From East I am chipping in for Kawahi Leonard, he is coming out of the closet and being the go to of Greg popovich.
+
+
+
+The fact of time is details  are lost, capturing those details of love makes big part of meaning full life.
+
+To keep the inspiration going ,Financial motivation is one of the reason.
 
 Currently its taken over by the machines where the
 <h2> Sites to bet on NBA

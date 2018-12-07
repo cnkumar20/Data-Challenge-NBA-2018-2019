@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://www.shellscript.sh/functions.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="theme-color" content="#dab084">
+        <meta property="og:description" content="
+        Functions - From the Shell Scripting Tutorial at https://www.shellscript.sh/        ">
+        <meta property="og:title" content="Shell Scripting Tutorial">
+<meta property="og:image" content="https://www.shellscript.sh/img/wordcloud.png">
+        <meta property="og:type" content="website">
+        <meta property="fb:admins" content="shellscripting">
+        <meta property="og:url" content="https://www.shellscript.sh/functions.html">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+        Functions - Shell Scripting Tutorial        </title>
+        <meta name="description" content="
+	" functions"="" -="" a="" bourne="" shell="" programming="" scripting="" tutorial="" for="" learning="" about="" using="" the="" unix="" shell.="" "="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="canonical" href="https://www.shellscript.sh/functions.html">
+        <link rel="stylesheet" href="./Functions - Shell Scripting Tutorial_files/shellscript.css">
+        <script src="./Functions - Shell Scripting Tutorial_files/cb=gapi.loaded_1" async=""></script><script src="./Functions - Shell Scripting Tutorial_files/cb=gapi(1).loaded_0" async=""></script><script async="" src="./Functions - Shell Scripting Tutorial_files/analytics.js"></script><script async="" src="./Functions - Shell Scripting Tutorial_files/analytics.js"></script><script id="facebook-jssdk" src="./Functions - Shell Scripting Tutorial_files/sdk(1).js"></script><script src="./Functions - Shell Scripting Tutorial_files/jquery-1.10.2.min.js"></script>
+        <link rel="alternate" type="application/rss+xml" href="https://www.shellscript.sh/rss.xml" title="Shell Scripting RSS Feed">
+<!-- auto ads -->
+<script async="" src="./Functions - Shell Scripting Tutorial_files/f.txt"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-3578434180456831",
+          enable_page_level_ads: true
+     });
+</script>
+    <script src="./Functions - Shell Scripting Tutorial_files/gumroad-overlay-5e69531c3c36b7ad6f6fc26fc3879e04a55e8af4407d3982be476efd01d905b9.js"></script><script src="./Functions - Shell Scripting Tutorial_files/gumroad-overlay-5e69531c3c36b7ad6f6fc26fc3879e04a55e8af4407d3982be476efd01d905b9.js"></script><script src="./Functions - Shell Scripting Tutorial_files/gumroad-embed-90d6656bfa6dbce9e85b9c85f127e863a16d95310e164f79358ea28eeab2c2bb.js"></script><link rel="stylesheet" type="text/css" href="./Functions - Shell Scripting Tutorial_files/prettify.css"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#1d3c78;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100%;overflow:hidden;position:fixed;visibility:hidden;width:100%}@keyframes fb_bounce_in_v2{0%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50%{transform:scale(1.03, 1.03);transform-origin:bottom right}100%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}@keyframes fb_bounce_in_v2_mobile_chat_started{0%{opacity:0;top:20px}100%{opacity:1;top:0}}@keyframes fb_bounce_out_v2{0%{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100%{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}@keyframes fb_bounce_out_v2_mobile_chat_started{0%{opacity:1;top:0}100%{opacity:0;top:20px}}@keyframes fb_customer_chat_bubble_bounce_in_animation{0%{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70%{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100%{transform:scale(1, 1)}}</style><style type="text/css">a.gumroad-button { background-color: white !important; background-image: url("https://gumroad.com/button/button_bar.jpg") !important; background-repeat: repeat-x !important; border-radius: 4px !important; box-shadow: rgba(0, 0, 0, .4) 0 0 2px !important; color: #999 !important; display: inline-block !important; font-family: -apple-system, ".SFNSDisplay-Regular", "Helvetica Neue", Helvetica, Arial, sans-serif !important; font-size: 16px !important; font-style: normal !important; font-weight: 500 !important; line-height: 50px !important; padding: 0 15px !important; text-shadow: none !important; text-decoration: none !important; } .gumroad-button-logo { background-image: url("https://gumroad.com/button/button_logo.png") !important; background-size: cover !important; height: 17px !important; width: 16px !important; display: inline-block !important; margin-bottom: -3px !important; margin-right: 15px !important; } .gumroad-loading-indicator { background: white; border-radius: 50%; box-shadow: 0 1px 2px rgba(0, 0, 0, .1); box-sizing: border-box; display: none; height: 60px; left: 50% !important; margin-left: -30px !important; margin-top: -30px !important; padding: 10px; position: fixed; top: 50% !important; width: 60px; z-index: 99997; } .gumroad-loading-indicator i { background: url("https://gumroad.com/js/loading-rainbow.svg"); height: 40px; width: 40px; display: inline-block; background-size: contain; -webkit-animation: gumroad-spin 1.5s infinite linear; animation: gumroad-spin 1.5s infinite linear; } .gumroad-overlay-iframe { position: fixed !important; overflow: hidden !important; z-index: 99998 !important; top: 0 !important; right: 0 !important; width: 0; height: 0; border: none !important; margin: 0 !important; padding: 0 !important; zoom: 1; } @-webkit-keyframes gumroad-spin { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); } } @keyframes gumroad-spin { 0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); } 100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); } } </style></head>
+    <body style="">
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Functions - Shell Scripting Tutorial_files/7LloFuHvA7I(1).html" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    
+        <div class="responsive-header visible-xs visible-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="top-section">
+                            <div class="profile-image">
+                                <img src="./Functions - Shell Scripting Tutorial_files/wordcloud_profile.png" alt="Shell Scripting Tutorial">
+                            </div>
+                            <div class="profile-content">
+                                <h3 class="profile-title">Shell Scripting Tutorial</h3>
+                                <p class="profile-description">The Linux Shell Scripting Tutorial</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.shellscript.sh/functions.html#" class="toggle-menu"><i class="fa fa-bars"></i></a>
+                <div class="main-navigation responsive-menu">
+                    <ul>
+                    <li><a href="https://www.shellscript.sh/tips/"><i class="fa fa-star-o"></i>NEW: Shell Scripting Tips</a><br></li> 
+                    <li><a href="https://www.shellscript.sh/index.html"><i class="fa fa-arrow-right"></i>1. Introduction</a></li>
+                    <li><a href="https://www.shellscript.sh/philosophy.html"><i class="fa fa-arrow-right"></i>2. Philosophy</a></li>
+                    <li><a href="https://www.shellscript.sh/first.html"><i class="fa fa-arrow-right"></i>3. A First Script</a></li>
+                    <li><a href="https://www.shellscript.sh/variables1.html"><i class="fa fa-arrow-right"></i>4. Variables (Part 1)</a></li>
+                    <li><a href="https://www.shellscript.sh/wildcards.html"><i class="fa fa-arrow-right"></i>5. Wildcards</a></li>
+                    <li><a href="https://www.shellscript.sh/escape.html"><i class="fa fa-arrow-right"></i>6. Escape Characters</a></li>
+                    <li><a href="https://www.shellscript.sh/loops.html"><i class="fa fa-arrow-right"></i>7. Loops</a></li>
+                    <li><a href="https://www.shellscript.sh/test.html"><i class="fa fa-arrow-right"></i>8. Test</a></li>
+                    <li><a href="https://www.shellscript.sh/case.html"><i class="fa fa-arrow-right"></i>9. Case</a></li>
+                    <li><a href="https://www.shellscript.sh/variables2.html"><i class="fa fa-arrow-right"></i>10. Variables (Part 2)</a></li>
+                    <li><a href="https://www.shellscript.sh/variables3.html"><i class="fa fa-arrow-right"></i>11. Variables (Part 3)</a></li>
+                    <li><a href="https://www.shellscript.sh/external.html"><i class="fa fa-arrow-right"></i>12. External Programs</a></li>
+                    <li><a href="https://www.shellscript.sh/functions.html"><i class="fa fa-arrow-right"></i>13. Functions</a></li>
+                    <li><a href="https://www.shellscript.sh/hints.html"><i class="fa fa-arrow-right"></i>14. Hints and Tips</a></li>
+                    <li><a href="https://www.shellscript.sh/quickref.html"><i class="fa fa-arrow-right"></i>15. Quick Reference</a></li>
+                    <li><a href="https://www.shellscript.sh/interactive.html"><i class="fa fa-arrow-right"></i>16. Interactive Shell</a></li>
+                    <li><a href="https://www.shellscript.sh/exercises.html"><i class="fa fa-arrow-right"></i>17. Exercises</a></li>
+                    </ul>
+                     <ul class="navigation">
+                        <li><a href="https://www.shellscript.sh/functions.html#contact" class="active"><i class="fa fa-envelope"></i>Contact Me</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="sidebar-menu hidden-xs hidden-sm">
+            <div class="top-section">
+                <div class="profile-image">
+                    <img src="./Functions - Shell Scripting Tutorial_files/wordcloud_profile.png" alt="Shell Scripting Tutorial">
+                </div>
+                <h3 class="profile-title">Shell Scripting Tutorial</h3>
+                <p class="profile-description">
+A Bourne Shell Programming / Scripting Tutorial for learning about using the Unix shell. Learn Linux / Unix shell scripting by example along with the theory. I'll have you mastering Unix shell scripting in no time.<br>
+</p>
+
+            </div> <!-- top-section -->
+            <div class="main-navigation">
+<center>
+<script src="./Functions - Shell Scripting Tutorial_files/gumroad.js"></script>
+<a class="gumroad-button" href="https://gum.co/shellscript" target="_blank"><span class="gumroad-button-logo"></span>Buy this tutorial as a PDF ($5)</a>
+</center>
+                <ul>
+                    <li><a href="https://www.shellscript.sh/tips/"><i class="fa fa-star-o"></i>NEW: Shell Scripting Tips</a><br></li>
+                    <li><a href="https://www.shellscript.sh/index.html"><i class="fa fa-arrow-right"></i>1. Introduction</a></li>
+                    <li><a href="https://www.shellscript.sh/philosophy.html"><i class="fa fa-arrow-right"></i>2. Philosophy</a></li>
+                    <li><a href="https://www.shellscript.sh/first.html"><i class="fa fa-arrow-right"></i>3. A First Script</a></li>
+                    <li><a href="https://www.shellscript.sh/variables1.html"><i class="fa fa-arrow-right"></i>4. Variables (Part 1)</a></li>
+                    <li><a href="https://www.shellscript.sh/wildcards.html"><i class="fa fa-arrow-right"></i>5. Wildcards</a></li>
+                    <li><a href="https://www.shellscript.sh/escape.html"><i class="fa fa-arrow-right"></i>6. Escape Characters</a></li>
+                    <li><a href="https://www.shellscript.sh/loops.html"><i class="fa fa-arrow-right"></i>7. Loops</a></li>
+                    <li><a href="https://www.shellscript.sh/test.html"><i class="fa fa-arrow-right"></i>8. Test</a></li>
+                    <li><a href="https://www.shellscript.sh/case.html"><i class="fa fa-arrow-right"></i>9. Case</a></li>
+                    <li><a href="https://www.shellscript.sh/variables2.html"><i class="fa fa-arrow-right"></i>10. Variables (Part 2)</a></li>
+                    <li><a href="https://www.shellscript.sh/variables3.html"><i class="fa fa-arrow-right"></i>11. Variables (Part 3)</a></li>
+                    <li><a href="https://www.shellscript.sh/external.html"><i class="fa fa-arrow-right"></i>12. External Programs</a></li>
+                    <li><a href="https://www.shellscript.sh/functions.html"><i class="fa fa-arrow-right"></i>13. Functions</a></li>
+                    <li><a href="https://www.shellscript.sh/hints.html"><i class="fa fa-arrow-right"></i>14. Hints and Tips</a></li>
+                    <li><a href="https://www.shellscript.sh/quickref.html"><i class="fa fa-arrow-right"></i>15. Quick Reference</a></li>
+                    <li><a href="https://www.shellscript.sh/interactive.html"><i class="fa fa-arrow-right"></i>16. Interactive Shell</a></li>
+                    <li><a href="https://www.shellscript.sh/exercises.html"><i class="fa fa-arrow-right"></i>17. Exercises</a></li>
+                    </ul>
+                     <ul class="navigation">
+                    <li><a href="https://www.shellscript.sh/functions.html#publications" class="active"><i class="fa fa-book"></i>Publications</a></li>
+                    <li><a href="https://www.shellscript.sh/functions.html#contact"><i class="fa fa-link"></i>Contact Me</a></li>
+                </ul>
+
+            </div> <!-- .main-navigation -->
+            <div class="social-icons">
+<!--
+                <ul>
+                    <li><a href="http://facebook.com/shellscript"><i class="fa fa-facebook"></i></a><br/>
+                </ul>
+-->
+<div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/shellscript/" data-tabs="timeline" data-width="280" data-small-header="true" data-adapt-container-width="false" data-hide-cover="true" data-show-facepile="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=false&amp;app_id=&amp;container_width=251&amp;hide_cover=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fshellscript%2F&amp;locale=en_GB&amp;sdk=joey&amp;show_facepile=true&amp;small_header=true&amp;tabs=timeline&amp;width=280"><span style="vertical-align: bottom; width: 280px; height: 500px;"><iframe name="f33a999f4b6146" width="280px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:page Facebook Social Plugin" src="./Functions - Shell Scripting Tutorial_files/page.html" style="border: none; visibility: visible; width: 280px; height: 500px;" class=""></iframe></span></div>
+            </div> <!-- .social-icons -->
+        </div> <!-- .sidebar-menu -->
+        
+
+        <div class="banner-bg" id="top">
+            <div class="banner-overlay"></div>
+            <div class="welcome-text">
+                <h2>Shell Scripting Tutorial</h2>
+                <h3>Functions</h3>                <!-- <h5>A Bourne Shell Programming / Scripting Tutorial for learning about using the Unix shell. Learn Linux / Unix shell scripting by example along with the theory. </h5> -->
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="fluid-container">
+
+                <div class="content-wrapper">
+                    <div class="page-section" id="content">
+      <div align="right"> <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 38px; height: 24px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 38px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I0_1543962478629" name="I0_1543962478629" src="./Functions - Shell Scripting Tutorial_files/fastbutton.html" data-gapiattached="true" title="G+"></iframe></div>
+<a href="https://www.shellscript.sh/rss.xml"><img src="./Functions - Shell Scripting Tutorial_files/rss.png" title="RSS Feed" alt="RSS Feed"></a>
+<a href="http://twitter.com/home?status=Functions%20-%20https://www.shellscript.sh/functions.html" target="_blank"><img src="./Functions - Shell Scripting Tutorial_files/twitter.png" width="23" height="23" alt="Share on Twitter" border="0"></a> 
+<iframe src="./Functions - Shell Scripting Tutorial_files/share_button.html" width="68" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<!-- <A href="http://www.linkedin.com/shareArticle?mini=true&url=https://www.shellscript.sh/functions.html&title=Functions&summary=A%20Bourne%20Shell%20Programming/Scripting%20Tutorial%20for%20learning%20about%20using%20the%20Unix%20shell.%20Learn%20Linux%20/%20Unix%20shell%20scripting%20by%20example%20along%20with%20the%20theory.%20We%27ll%20have%20you%20mastering%20Unix%20shell%20scripting%20in%20no%20time!" target="_blank"><img src="/img/linkedin.png" width="24" height="23" alt="Share on LinkedIn" border="0"/></A> -->
+<!-- <A href="http://identi.ca/notice/new?status_textarea=https://www.shellscript.sh/functions.html" target="_blank"><img src="/img/identica.png" width="23" height="24" alt="Share on Identi.ca" border="0"/></A> -->
+<!-- <A href="http://www.stumbleupon.com/submit?url=https://www.shellscript.sh/functions.html&title=Functions" target="_blank"><img src="/img/stumble.png" width="23" height="23" alt="Share on StumbleUpon" border="0"/></A> -->
+</div>
+<p>
+<script async="" src="./Functions - Shell Scripting Tutorial_files/f.txt"></script>
+<!-- responsive -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3578434180456831" data-ad-slot="4773217603" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</p>
+<p>
+<script src="./Functions - Shell Scripting Tutorial_files/gumroad.js"></script>
+<a class="gumroad-button" href="https://gum.co/shellscript" target="_blank"><span class="gumroad-button-logo"></span>You can now buy this tutorial as a PDF for $5!</a>
+
+
+</p><h1>
+13. Functions
+</h1>
+One often-overlooked feature of Bourne shell script programming is that
+you can easily write functions for use within your script. This is
+generally done in one of two ways; with a simple script, the function
+is simply declared in the same file as it is called.
+<br>
+However, when writing a suite of scripts, it is often easier to write
+a "library" of useful functions, and source that file at
+the start of the other scripts which use the functions. This will
+be shown <a href="https://www.shellscript.sh/functions.html#libraries">later</a>.
+<br>
+The method is the same however it is done; we will primarily be using
+the first way here. The second (library) method is basically the same, except
+that the command <pre class="prettyprint lang-sh prettyprinted" style=""><span class="pun">.</span><span class="pln"> </span><span class="pun">./</span><span class="pln">library</span><span class="pun">.</span><span class="pln">sh</span></pre> goes at the start of the script.
+
+<p>
+There could be some confusion about whether to call shell functions
+<i>procedures</i> or <i>functions</i>; the definition of a function
+is traditionally that it returns a single value, and does not output
+anything. A procedure, on the other hand, does not return a value, but
+may produce output. A shell function may do neither, either or both.  
+It is generally accepted that in shell scripts they are called functions.</p><p>
+A function may return a value in one of four different ways:</p><ul class="circle">
+<li>Change the state of a variable or variables</li>
+<li>Use the <code>exit</code> command to end the shell script</li>
+
+<li>Use the <code>return</code> command to end the function, and return the supplied value to the calling section of the shell script</li>
+<li>echo output to stdout, which will be caught by the caller just as c=`expr $a + $b` is caught</li>
+</ul><p>
+This is rather like C, in that <code>exit</code> stops the program, and <code>return</code> returns
+control to the caller. The difference is that a shell function cannot change its parameters, though
+it can change global parameters.
+</p><p>
+A simple script using a function would look like this:</p>
+
+<hr noshade="noshade" align="left" width="40%">
+<a href="https://www.shellscript.sh/eg/function.sh.txt">function.sh</a>
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com">#!/bin/sh</span><span class="pln">
+</span><span class="com"># A simple script with a function...</span><span class="pln">
+
+add_a_user</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  USER</span><span class="pun">=</span><span class="pln">$1
+  PASSWORD</span><span class="pun">=</span><span class="pln">$2
+  shift</span><span class="pun">;</span><span class="pln"> shift</span><span class="pun">;</span><span class="pln">
+  </span><span class="com"># Having shifted twice, the rest is now comments ...</span><span class="pln">
+  COMMENTS</span><span class="pun">=</span><span class="pln">$@
+  echo </span><span class="str">"Adding user $USER ..."</span><span class="pln">
+  echo useradd </span><span class="pun">-</span><span class="pln">c </span><span class="str">"$COMMENTS"</span><span class="pln"> $USER
+  echo passwd $USER $PASSWORD
+  echo </span><span class="str">"Added user $USER ($COMMENTS) with pass $PASSWORD"</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">###</span><span class="pln">
+</span><span class="com"># Main body of script starts here</span><span class="pln">
+</span><span class="com">###</span><span class="pln">
+echo </span><span class="str">"Start of script..."</span><span class="pln">
+add_a_user bob letmein </span><span class="typ">Bob</span><span class="pln"> </span><span class="typ">Holness</span><span class="pln"> the presenter
+add_a_user fred badpassword </span><span class="typ">Fred</span><span class="pln"> </span><span class="typ">Durst</span><span class="pln"> the singer
+add_a_user bilko worsepassword </span><span class="typ">Sgt</span><span class="pun">.</span><span class="pln"> </span><span class="typ">Bilko</span><span class="pln"> the role model
+echo </span><span class="str">"End of script..."</span></pre>
+<hr noshade="noshade" align="left" width="40%">
+<p>Line 4 identifies itself as a function declaration by ending in ().
+This is followed by <code>{</code>, and everything following to the
+matching <code>}</code> is taken to be the code of that function.
+<br>
+This code is <i>not executed</i> until the function is called. Functions are 
+read in, but basically ignored until they are actually called.
+
+</p>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-3578434180456831";
+/* LgeRect */
+google_ad_slot = "9048377618";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="./Functions - Shell Scripting Tutorial_files/f(1).txt">
+</script>
+
+<p>
+Note that for this example the <code>useradd</code> and <code>passwd</code>
+commands have been prefixed with <code>echo</code> - this is a useful 
+debugging technique to check that the right commands would be executed.
+It also means that you can run the script without being root or adding
+dodgy user accounts to your system!
+</p><p>
+We have been used to the idea that a shell
+script is executed sequentially. This is not so with functions.
+<br>
+In this case, the function <code>add_a_user</code> is read in and checked for syntax,
+but not executed until it is explicitly called. 
+This is where the <a href="http://steve-parker.org/articles/shellshock/">Shellshock</a> bug of 2014 comes into play. Other commands after the function definition were executed, even though they were not part of the function itself. See <a href="http://steve-parker.org/articles/shellshock/">http://steve-parker.org/articles/shellshock/</a> for more information on this.
+<br>
+Execution starts with the <code>echo</code> statement "Start of script...". The next line, <code>add_a_user bob letmein Bob Holness</code> is
+recognised as a function call so the <code>add_a_user</code> function is entered
+and starts executing with certain additions to the environment:</p>
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="pln">$1</span><span class="pun">=</span><span class="pln">bob
+$2</span><span class="pun">=</span><span class="pln">letmein
+$3</span><span class="pun">=</span><span class="typ">Bob</span><span class="pln">
+$4</span><span class="pun">=</span><span class="typ">Holness</span><span class="pln">
+$5</span><span class="pun">=</span><span class="pln">the
+$6</span><span class="pun">=</span><span class="pln">presenter</span></pre><p>
+
+So within that function, <code>$1</code> is set to <code>bob</code>,
+regardless of what <code>$1</code> may be set to outside of the function.
+<br>
+So if we want to refer to the "original" $1 <i>inside</i> the function,
+we have to assign a name to it - such as: <code>A=$1</code> before we call the function.
+Then, within the function, we can refer to <code>$A</code>.
+
+<br>
+We use the <code>shift</code> command again to get the <code>$3</code> and
+onwards parameters into <code>$@</code>.
+The function then adds the user and sets their password. It <code>echo</code>es
+a comment to that effect, and returns control to the next line of the main
+code.</p>
+<script type="text/javascript"><!--
+google_ad_client = "pub-3578434180456831";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "text_image";
+//2007-09-26: sh_var3_med_rect
+google_ad_channel = "2763776785";
+//-->
+</script>
+<script type="text/javascript" src="./Functions - Shell Scripting Tutorial_files/f(1).txt">
+</script>
+<a name="scope"></a>
+<h2>Scope of Variables</h2><p>
+Programmers used to other languages may be surprised at the scope rules
+for shell functions. Basically, there is no scoping, other than the
+parameters (<code>$1</code>, <code>$2</code>, <code>$@</code>, etc).<br>
+
+Taking the following simple code segment:</p>
+<hr noshade="noshade" align="left" width="40%">
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com">#!/bin/sh</span><span class="pln">
+
+myfunc</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  echo </span><span class="str">"I was called as : $@"</span><span class="pln">
+  x</span><span class="pun">=</span><span class="lit">2</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">### Main script starts here </span><span class="pln">
+
+echo </span><span class="str">"Script was called with $@"</span><span class="pln">
+x</span><span class="pun">=</span><span class="lit">1</span><span class="pln">
+echo </span><span class="str">"x is $x"</span><span class="pln">
+myfunc </span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="lit">3</span><span class="pln">
+echo </span><span class="str">"x is $x"</span></pre>
+<hr noshade="noshade" align="left" width="40%">
+The script, when called as <code>scope.sh a b c</code>, gives the following output:
+<hr noshade="noshade" align="left" width="40%">
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="typ">Script</span><span class="pln"> was called with a b c
+x is </span><span class="lit">1</span><span class="pln">
+I was called as </span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pln"> </span><span class="lit">2</span><span class="pln"> </span><span class="lit">3</span><span class="pln">
+x is </span><span class="lit">2</span></pre>
+<hr noshade="noshade" align="left" width="40%"><p>
+The <code>$@</code> parameters are changed within the function to reflect
+how the function was called. The variable <code>x</code>, however, is
+effectively a global variable - <code>myfunc</code> changed it, and that
+change is still effective when control returns to the main script.</p>
+
+<p>
+A function will be called in a sub-shell if its output is piped somewhere
+else - that is, "<code>myfunc 1 2 3 | tee out.log</code>" will still say "x is 1" the second time around. This is because a new shell process is called to pipe <code>myfunc()</code>. This can make debugging very frustrating; Astrid had a script which suddenly failed when the "<code>| tee</code>" was added, and it is not immediately obvious why this must be. The <code>tee</code> has to be started up before the function to the left of the pipe; with the simple example of "<code>ls | grep foo</code>", then <code>grep</code> has to be started first, with its <code>stdin</code> then tied to the <code>stdout</code> of <code>ls</code> once <code>ls</code> starts. In the shell script, the shell has already been started before we even knew we were going to pipe through <code>tee</code>, so the operating system has to start <code>tee</code>, then start a new shell to call <code>myfunc()</code>. This is frustrating, but well worth being aware of.
+
+</p>
+<p>
+Functions cannot change the values they have been called with, either - this
+must be done by changing the variables themselves, not the parameters
+as passed to the script.<br>
+An example shows this more clearly:</p>
+<hr noshade="noshade" align="left" width="40%">
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com">#!/bin/sh</span><span class="pln">
+
+myfunc</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  echo </span><span class="str">"\$1 is $1"</span><span class="pln">
+  echo </span><span class="str">"\$2 is $2"</span><span class="pln">
+  </span><span class="com"># cannot change $1 - we'd have to say:</span><span class="pln">
+  </span><span class="com"># 1="Goodbye Cruel"</span><span class="pln">
+  </span><span class="com"># which is not a valid syntax. However, we can</span><span class="pln">
+  </span><span class="com"># change $a:</span><span class="pln">
+  a</span><span class="pun">=</span><span class="str">"Goodbye Cruel"</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">### Main script starts here </span><span class="pln">
+
+a</span><span class="pun">=</span><span class="typ">Hello</span><span class="pln">
+b</span><span class="pun">=</span><span class="typ">World</span><span class="pln">
+myfunc $a $b
+echo </span><span class="str">"a is $a"</span><span class="pln">
+echo </span><span class="str">"b is $b"</span></pre>
+<hr noshade="noshade" align="left" width="40%">
+<p>This rather cynical function changes $a, so the message "Hello World"
+becomes "Goodbye Cruel World".</p>
+<script type="text/javascript"><!--
+google_ad_client = "pub-3578434180456831";
+google_ad_width = 300;
+google_ad_height = 250;
+google_ad_format = "300x250_as";
+google_ad_type = "text_image";
+//2007-09-26: sh_var3_med_rect
+google_ad_channel = "2763776785";
+//-->
+</script>
+<script type="text/javascript" src="./Functions - Shell Scripting Tutorial_files/f(1).txt">
+</script>
+<a name="recursion"></a>
+<h2>Recursion</h2>
+<p>Functions can be recursive - here's a simple example of a factorial function:</p>
+
+<hr noshade="noshade" align="left" width="40%">
+<a href="https://www.shellscript.sh/eg/factorial.sh.txt"> factorial.sh </a>
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com">#!/bin/sh</span><span class="pln">
+
+factorial</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="str">"$1"</span><span class="pln"> </span><span class="pun">-</span><span class="pln">gt </span><span class="str">"1"</span><span class="pln"> </span><span class="pun">];</span><span class="pln"> </span><span class="kwd">then</span><span class="pln">
+    i</span><span class="pun">=</span><span class="str">`expr $1 - 1`</span><span class="pln">
+    j</span><span class="pun">=</span><span class="str">`factorial $i`</span><span class="pln">
+    k</span><span class="pun">=</span><span class="str">`expr $1 \* $j`</span><span class="pln">
+    echo $k
+  </span><span class="kwd">else</span><span class="pln">
+    echo </span><span class="lit">1</span><span class="pln">
+  </span><span class="kwd">fi</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+
+</span><span class="kwd">while</span><span class="pln"> </span><span class="pun">:</span><span class="pln">
+</span><span class="kwd">do</span><span class="pln">
+  echo </span><span class="str">"Enter a number:"</span><span class="pln">
+  read x
+  factorial $x
+</span><span class="kwd">done</span><span class="pln">                      </span></pre>
+<hr noshade="noshade" align="left" width="40%">
+<a name="libraries"></a>
+<p>As promised, we will now briefly discuss using libraries between shell
+scripts. These can also be used to define common variables, as we shall see.</p>
+<hr noshade="noshade" align="left" width="40%">
+<a href="https://www.shellscript.sh/eg/common.lib.txt">common.lib</a>
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com"># common.lib</span><span class="pln">
+</span><span class="com"># Note no #!/bin/sh as this should not spawn </span><span class="pln">
+</span><span class="com"># an extra shell. It's not the end of the world </span><span class="pln">
+</span><span class="com"># to have one, but clearer not to.</span><span class="pln">
+</span><span class="com">#</span><span class="pln">
+STD_MSG</span><span class="pun">=</span><span class="str">"About to rename some files..."</span><span class="pln">
+
+rename</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  </span><span class="com"># expects to be called as: rename .txt .bak </span><span class="pln">
+  FROM</span><span class="pun">=</span><span class="pln">$1
+  TO</span><span class="pun">=</span><span class="pln">$2
+
+  </span><span class="kwd">for</span><span class="pln"> i </span><span class="kwd">in</span><span class="pln"> </span><span class="pun">*</span><span class="pln">$FROM
+  </span><span class="kwd">do</span><span class="pln">
+    j</span><span class="pun">=</span><span class="str">`basename $i $FROM`</span><span class="pln">
+    mv $i $</span><span class="pun">{</span><span class="pln">j</span><span class="pun">}</span><span class="pln">$TO
+  </span><span class="kwd">done</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<hr noshade="noshade" align="left" width="40%">
+<a href="https://www.shellscript.sh/eg/function2.sh.txt">function2.sh</a>
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com">#!/bin/sh</span><span class="pln">
+</span><span class="com"># function2.sh</span><span class="pln">
+</span><span class="pun">.</span><span class="pln"> </span><span class="pun">./</span><span class="pln">common</span><span class="pun">.</span><span class="pln">lib
+echo $STD_MSG
+rename </span><span class="pun">.</span><span class="pln">txt </span><span class="pun">.</span><span class="pln">bak</span></pre>
+<hr noshade="noshade" align="left" width="40%">
+<a href="https://www.shellscript.sh/eg/function3.sh.txt">function3.sh</a>
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com">#!/bin/sh</span><span class="pln">
+</span><span class="com"># function3.sh</span><span class="pln">
+</span><span class="pun">.</span><span class="pln"> </span><span class="pun">./</span><span class="pln">common</span><span class="pun">.</span><span class="pln">lib
+echo $STD_MSG
+rename </span><span class="pun">.</span><span class="pln">html </span><span class="pun">.</span><span class="pln">html</span><span class="pun">-</span><span class="pln">bak</span></pre>
+<hr noshade="noshade" align="left" width="40%"><p>
+Here we see two user shell scripts, <code>function2.sh</code> and 
+
+<code>function3.sh</code>, each <i>source</i>ing the common library
+file <code>common.lib</code>, and using variables and functions declared
+in that file.
+<br>
+This is nothing too earth-shattering, just an example of how code
+reuse can be done in shell programming.
+</p>
+<a name="exit"></a>
+<h2>Return Codes</h2>
+<p>For details about exit codes, see the <a href="https://www.shellscript.sh/exitcodes.html">Exit Codes</a> part of the <a href="https://www.shellscript.sh/hints.html">Hints and
+Tips</a> section of the tutorial. For now, though we shall briefly look at the <code>return</code> call.</p>
+
+<hr noshade="noshade" align="left" width="40%">
+<pre class="prettyprint lang-sh prettyprinted" style=""><span class="com">#!/bin/sh</span><span class="pln">
+
+adduser</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+  USER</span><span class="pun">=</span><span class="pln">$1
+  PASSWORD</span><span class="pun">=</span><span class="pln">$2
+  shift </span><span class="pun">;</span><span class="pln"> shift
+  COMMENTS</span><span class="pun">=</span><span class="pln">$@
+  useradd </span><span class="pun">-</span><span class="pln">c </span><span class="str">"${COMMENTS}"</span><span class="pln"> $USER
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="str">"$?"</span><span class="pln"> </span><span class="pun">-</span><span class="pln">ne </span><span class="str">"0"</span><span class="pln"> </span><span class="pun">];</span><span class="pln"> </span><span class="kwd">then</span><span class="pln">
+    echo </span><span class="str">"Useradd failed"</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">1</span><span class="pln">
+  </span><span class="kwd">fi</span><span class="pln">
+  passwd $USER $PASSWORD
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="str">"$?"</span><span class="pln"> </span><span class="pun">-</span><span class="pln">ne </span><span class="str">"0"</span><span class="pln"> </span><span class="pun">];</span><span class="pln"> </span><span class="kwd">then</span><span class="pln">
+    echo </span><span class="str">"Setting password failed"</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> </span><span class="lit">2</span><span class="pln">
+  </span><span class="kwd">fi</span><span class="pln">
+  echo </span><span class="str">"Added user $USER ($COMMENTS) with pass $PASSWORD"</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="com">## Main script starts here</span><span class="pln">
+
+adduser bob letmein </span><span class="typ">Bob</span><span class="pln"> </span><span class="typ">Holness</span><span class="pln"> from </span><span class="typ">Blockbusters</span><span class="pln">
+ADDUSER_RETURN_CODE</span><span class="pun">=</span><span class="pln">$</span><span class="pun">?</span><span class="pln">
+</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="str">"$ADDUSER_RETURN_CODE"</span><span class="pln"> </span><span class="pun">-</span><span class="pln">eq </span><span class="str">"1"</span><span class="pln"> </span><span class="pun">];</span><span class="pln"> </span><span class="kwd">then</span><span class="pln">
+  echo </span><span class="str">"Something went wrong with useradd"</span><span class="pln">
+</span><span class="kwd">elif</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="str">"$ADDUSER_RETURN_CODE"</span><span class="pln"> </span><span class="pun">-</span><span class="pln">eq </span><span class="str">"2"</span><span class="pln"> </span><span class="pun">];</span><span class="pln"> </span><span class="kwd">then</span><span class="pln"> 
+   echo </span><span class="str">"Something went wrong with passwd"</span><span class="pln">
+</span><span class="kwd">else</span><span class="pln">
+  echo </span><span class="str">"Bob Holness added to the system."</span><span class="pln">
+</span><span class="kwd">fi</span></pre>
+<hr noshade="noshade" align="left" width="40%">
+<p>This script checks the two external calls it makes (<code>useradd</code> and <code>passwd</code>), and lets the user
+know if they fail. The function then defines a return code of 1 to indicate any problem with <code>useradd</code>, and 2 to
+indicate any problem with <code>passwd</code>. That way, the calling script knows where the problem lay.
+</p>
+<p>For a long time, this tutorial checked "$?" both times, rather than setting <code>ADDUSER_RETURN_CODE=$?</code>, and then looking at the value of <code>ADDUSER_RETURN_CODE</code> each time. This was a bug (thanks to Elyza for pointing it out). You have to save <code>$?</code>, because as soon as you run another command, such as <code>if</code>, its value will be replaced. That is why we save the <code>adduser</code> return value in the <code>$ADDUSER_RETURN_CODE</code> variable, before acting on its content. <code>$ADDUSER_RETURN_CODE</code> is certain to remain the same; <code>$?</code> will change with every command that is executed.</p>
+
+    <center>
+      <div id="___plusone_1" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 38px; height: 24px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 38px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" width="100%" id="I1_1543962478644" name="I1_1543962478644" src="./Functions - Shell Scripting Tutorial_files/fastbutton(1).html" data-gapiattached="true" title="G+"></iframe></div>
+<a href="https://www.shellscript.sh/rss.xml"><img src="./Functions - Shell Scripting Tutorial_files/rss.png" title="RSS Feed" alt="RSS Feed"></a>
+<a href="http://twitter.com/home?status=Functions%20-%20https://www.shellscript.sh/functions.html" target="_blank"><img src="./Functions - Shell Scripting Tutorial_files/twitter.png" width="23" height="23" alt="Share on Twitter" border="0"></a> 
+<iframe src="./Functions - Shell Scripting Tutorial_files/share_button(1).html" width="68" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+<!-- <A href="http://www.linkedin.com/shareArticle?mini=true&url=https://www.shellscript.sh/functions.html&title=Functions&summary=A%20Bourne%20Shell%20Programming/Scripting%20Tutorial%20for%20learning%20about%20using%20the%20Unix%20shell.%20Learn%20Linux%20/%20Unix%20shell%20scripting%20by%20example%20along%20with%20the%20theory.%20We%27ll%20have%20you%20mastering%20Unix%20shell%20scripting%20in%20no%20time!" target="_blank"><img src="/img/linkedin.png" width="24" height="23" alt="Share on LinkedIn" border="0"/></A> -->
+<!-- <A href="http://identi.ca/notice/new?status_textarea=https://www.shellscript.sh/functions.html" target="_blank"><img src="/img/identica.png" width="23" height="24" alt="Share on Identi.ca" border="0"/></A> -->
+<!-- <A href="http://www.stumbleupon.com/submit?url=https://www.shellscript.sh/functions.html&title=Functions" target="_blank"><img src="/img/stumble.png" width="23" height="23" alt="Share on StumbleUpon" border="0"/></A> -->
+<br>
+      <a class="btn btn-primary btn-lg" href="https://www.shellscript.sh/external.html" role="button"><i class="fa fa-chevron-left"></i> Back:  External Programs</a>
+      <a class="btn btn-primary btn-lg" href="https://www.shellscript.sh/hints.html" role="button">Next: Hints and Tips <i class="fa fa-chevron-right"></i></a>
+    </center>
+            
+
+                    </div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+            <!-- BOOKS START -->
+<br>
+<h2>You can buy the content of this tutorial as a PDF to download to all of your devices!</h2>
+<script src="./Functions - Shell Scripting Tutorial_files/gumroad-embed.js"></script>
+<iframe allowfullscreen="allowfullscreen" class="gumroad-embed-iframe" scrolling="no" width="100%" height="875px" id="gumroad-embed-iframe-shellscript" style="display: block !important; border: none !important; margin: 0 auto !important; padding: 0 !important; max-width: 676px !important;" src="./Functions - Shell Scripting Tutorial_files/shellscript.html"></iframe><div class="gumroad-product-embed" data-gumroad-product-id="shellscript" style="display: none;"><a href="https://gumroad.com/l/shellscript" target="_blank">Loading...</a></div>
+            <!-- BOOKS END -->
+<!-- FOOTER AD -->
+	<a name="publications"></a>
+<script async="" src="./Functions - Shell Scripting Tutorial_files/f.txt"></script>
+<!-- sh-auto -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3578434180456831" data-ad-slot="8340980804" data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- FOOTER AD END -->
+                    <!-- CONTACT -->
+                    <div class="page-section" id="contact">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="widget-title">Contact</h4>
+                            <p>You can mail me with this form. If you expect a reply, please ensure that the address you specify is valid. Don't forget to include the simple addition question at the end of the form, to prove that you are a real person!</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form id="mailForm" action="https://mail.shellscript.sh/mail/index.php" method="post" class="contact-form">
+                            <fieldset class="col-md-4 col-sm-6">
+                                <input type="text" name="8kfW-Name-pJYZ" id="8kfW-Name-pJYZ" placeholder="Your Name...">
+                            </fieldset>
+                            <fieldset class="col-md-4 col-sm-6">
+                                <input type="email" name="EnVF-email-5n79" id="email" placeholder="Your Email...">
+                            </fieldset>
+                            <fieldset class="col-md-4 col-sm-12">
+                                <input type="text" name="QnN6-Subject-0vY5" id="QnN6-Subject-0vY5" placeholder="Subject...">
+                            </fieldset>
+                            <fieldset class="col-md-12 col-sm-12">
+                                <textarea name="message" id="message" cols="30" rows="6" placeholder="Leave your message..."></textarea>
+                            </fieldset>
+                            <fieldset class="col-md-12 col-sm-6">
+                                <input type="hidden" id="maths_a" name="maths_a" value="8"><input type="hidden" id="maths_b" name="maths_b" value="2"><input type="hidden" id="mailkey" name="mailkey" value="foo"><input onkeyup="checkMaths();" type="text" name="3A2x-Maths-iI81" id="3A2x-Maths-iI81" placeholder="Answer this question to enable the &#39;Send Message&#39; button: What is 8 + 2?">                            </fieldset>
+                            <fieldset class="col-md-12 col-sm-12">
+                                <input id="mailSubmit" type="submit" class="button big default" value="Send Message" disabled="">
+                            </fieldset>
+                        </form>
+                    </div> <!-- .contact-form -->
+                    </div>
+
+<!--footer responsive -->
+
+<script async="" src="./Functions - Shell Scripting Tutorial_files/f.txt"></script>
+<ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-3578434180456831" data-ad-slot="8767010726"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                    <hr>
+
+                    <div class="row" id="footer">
+                        <div class="col-md-12 text-center">
+                            <p class="copyright-text">Copyright © 2000 - 2018 <a target="_blank" href="http://steve-parker.org/cv/">Steve Parker</a></p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script src="./Functions - Shell Scripting Tutorial_files/shellscript.js"></script>
+        <script src="./Functions - Shell Scripting Tutorial_files/onejs"></script>
+        <script src="./Functions - Shell Scripting Tutorial_files/platform.js" async="" defer="" gapi_processed="true"> {lang: 'en-GB'} </script>
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async="" src="./Functions - Shell Scripting Tutorial_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-80984298-2');
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80984298-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-80984298-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+    
+
+<iframe name="oauth2relay814536294" id="oauth2relay814536294" src="./Functions - Shell Scripting Tutorial_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><div class="gumroad-loading-indicator"><i></i></div><iframe allowfullscreen="allowfullscreen" class="gumroad-overlay-iframe" src="./Functions - Shell Scripting Tutorial_files/overlay_page.html"></iframe></body><iframe sandbox="allow-scripts allow-forms allow-same-origin" src="./Functions - Shell Scripting Tutorial_files/toolbar.html" scrolling="no" id="discoverbar" class="" style="height: 56px; width: 150px; display: none; box-shadow: rgb(0, 0, 0) 0px 0px 16px -4px; border: 1px solid rgb(170, 170, 170); border-radius: 4px;"></iframe></html>

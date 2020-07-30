@@ -39,7 +39,7 @@ class Loader(object):
         try:
             today_url= requests.get(self.start_source_url)
             if(today_url!=200):
-                raise Exception("{} not reachable".format(self.prefix_url_source))
+                raise Exception("{} not reachable".format(self.start_source_url))
         except Exception as error:
             logging.error(repr(error))
         self.json_data = json.loads(today_url.text)
@@ -69,7 +69,7 @@ class Loader(object):
         return json.loads(leagueRosterPlayers.text)
 
     def get_schema(self,key):
-        return avro.schema.Parse(open("./data/schema/player.avsc", "rb").read())
+        return avro.schema.parse(open("./data/schema/player.avsc", "a+").read())
 
 
     def create_player_avro_file(self,key,key_json_data,schema):
@@ -79,7 +79,7 @@ class Loader(object):
         avro_record=[]
         date = datetime.datetime.now().date()
         rec_writer = io.DatumWriter(schema)
-        writer = datafile.DataFileWriter(open(OUTFILE_NAME, 'w'),rec_writer,writer_schema=schema,codec='deflate')
+        writer = datafile.DataFileWriter(open(OUTFILE_NAME, 'w'),rec_writer)
         writer_json = open("dataScraper/output/player/players.json",'w')
         json_data = list()
         try:
@@ -107,13 +107,22 @@ class Loader(object):
             json.dump(json_data,writer_json)
         except Exception as e:
             print(e)
-
+    def create_player_json(self):
+        try:
+            self.prefix_url_source = "http://data.nba.net/10s"
+            team_configs_url = self.prefix_url_source + "/prod/2018/teams_config.json"
+            team_config = requests.get(team_configs_url)
+            writer = open("players.json", 'w')
+            writer.write(team_config.text)
+            writer.close()
+        except:
+            print("Exception1111")
     def create_teams_config(self):
         try:
             self.prefix_url_source="http://data.nba.net/10s"
-            team_configs_url=self.prefix_url_source+"/prod/2018/teams_config.json"
+            team_configs_url=self.prefix_url_source+"/prod/v1/2019/players.json"
             team_config = requests.get(team_configs_url)
-            writer = open("teamsConfig.json",'w')
+            writer = open("players.json",'w')
             writer.write(team_config.text)
             writer.close()
         except:
@@ -128,10 +137,11 @@ class Loader(object):
         writer.close()
 
     def read(self,key):
-        #self.get_latest_urls()
+        self.get_latest_urls()
         #key_json_data = self.get_data_from_links_json(key)
         if(key is "leagueRosterPlayers"):
-            self.create_player_avro_file(key,key_json_data,self.get_schema(key))
+           # self.create_player_avro_file(key,key_json_data,self.get_schema(key))
+            self.create_player_json()
         elif(key is 'teamsConfig'):
             self.create_teams_config()
         elif(key is 'leagueStandings'):
